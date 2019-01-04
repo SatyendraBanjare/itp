@@ -144,16 +144,29 @@ This Lecture introduces to more concrete ideas and problems on which the program
 The Internal Verification is tedious process that face major challenges like :
 
 \begin{itemize}
-	\item{Verbosity}
-	\item{Runtime Efficiency} 
+	\item{\textbf{Verbosity} : Deciding the level upto which the code should be made verbose. }
+	\item{\textbf{Runtime Efficiency} : The written code should be effiently run on most of host systems.} 
 \end{itemize}
 
-\textbf{Proof Extraction}
-\textbf{Coq Type Hierachy}
-\textbf{Secure Information Flow}
-\textbf{Taint Analysis}
-\textbf{Eliminatin Restrictions}
+There are some other areas touched in this lecture which are :
+\begin{itemize}
+\item{ \textbf{Program Extraction} deals with removing redundant code and keeping only the assumed correct end result part of code to be finally compiled and tested further. The idea of a proof-erasing compiler has beeen discussed. This extraction further boils down to deciding and optimizing how to selection producre is implemented. For a basic understanding A propery type data is to be lost but a Set type of data is preserved.
+}
+\item{\textbf{Coq Type Hierachy} illustrates the top level abstract data structure program extraction is based on. On the very basic $0^{th}$ level it consists of Sets and Property type datas, as one can easily guess.
+}
+\item{\textbf{Secure Information Flow} The Extraction basically removes all useable information from property datas so that their modification is unit steped and easy. This easily brings out concern for having a "secure" information flow ensuring an output insn't an outcome of some internal data leak or bug. 
+}
+\item{\textbf{Taint Analysis} deals with checking those variables whose values can be easily changed from the user input. The input made should be checked as well so that any unexpected behaviour is not witnessed.
+}
+\item{\textbf{Eliminatin Restrictions} prevent producing a set while eliminating a property. All other combinations like producing set and eliminating a set, producing a property and eliminating a set and producing a prop and eliminating a set are possible
 
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{elim_restrict.png}
+\end{figure}
+
+}
+\end{itemize}
 
 \section{Lecture 9}
 \section{Lecture 11}
