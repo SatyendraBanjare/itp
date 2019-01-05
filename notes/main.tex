@@ -161,7 +161,8 @@ There are some other areas touched in this lecture which are :
 \item{\textbf{Eliminatin Restrictions} prevent producing a set while eliminating a property. All other combinations like producing set and eliminating a set, producing a property and eliminating a set and producing a prop and eliminating a set are possible
 
 
-\begin{figure}
+\begin{figure}[!htb]
+\centering
   \includegraphics[width=\linewidth]{elim_restrict.png}
 \end{figure}
 
@@ -169,6 +170,12 @@ There are some other areas touched in this lecture which are :
 \end{itemize}
 
 \section{Lecture 9}
+This lecture title "Beyond Primitive recursion" talks about recursiveness of proof states and corresponding functions starting with the importance of having a termination of a proving process. The working principle often involves using a proof A to derive a proof B. But how far this proof dependence will go on is a good question to be answered.
+
+A well founded recursion involves those functions that do not have infinitely descending chains. The possible types of recursion include \textbf{Primitive recursion} (example : Fibonacci numbers, often defined using a fixpoint definition in Coq.), \textbf{Bounded recursion} (example : a bounded natural to Integer converter function), \textbf{Compositional Reasoning recursion} and an \textbf{Ad-Hoc recursion}. Our Proof system should always allow for a general recursion to occur to make it Turing Complete. How to achieve this ?
+
+Well professor answers using a principled version of bounded recursion. 
+
 \section{Lecture 11}
 
 \end{document}
