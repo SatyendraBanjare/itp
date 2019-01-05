@@ -177,6 +177,13 @@ A well founded recursion involves those functions that do not have infinitely de
 Well professor answers using a principled version of bounded recursion. 
 
 \section{Lecture 11}
+Having firstly solved software foundations, I was quite aware of things mentioned in this part which included the techniques refered as reflection technique for proving if a property P holds. The Tauto tactic and declaring and proving soundness (cases like :Forall numbers n) of a given property P.
+
+It reflection technique includes making decision procedure for checking P and it returns booleans. Proving that P holds whenever that decision is true and proving the proof terms of original theorem ab using "reflexivity"  tactic.
+
+The tauto tactic (which is also used by intuition) solves this goal by expanding out all 2n cases arising from the disjunctions in the assumption, leading to exponentially-sized proofs.
+
+Later part of the lecture discusses using syntactic representation which includes having an Inductive definitions, for a generic decision procedure and using that to prove goals further. 
 
 \end{document}
 
