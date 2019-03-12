@@ -1,3 +1,5 @@
+(** * Proof terms *)
+
 Section propositional.
   Variables P Q R : Prop.
 
@@ -19,3 +21,59 @@ Section propositional.
     fun p : P => fun np : ~P => np p.
 End propositional.
 
+Section firstorder.
+  Variable A : Set.
+  Variable Q : A -> A -> Prop.
+
+  Definition swap_quantifiers :
+    (forall (x : A) (y : A), Q x y)
+    -> (forall (y : A) (x : A), Q x y) :=
+    fun f : (forall (x : A) (y : A), Q x y) =>
+      fun y : A => fun x : A => f x y.
+
+  Definition swap_quantifiers2 :
+    (exists x : A, forall y : A, Q x y)
+    -> (forall y : A, exists x : A, Q x y) :=
+    fun Hex : (exists x : A, forall y : A, Q x y) =>
+      fun y : A =>
+  let (x, Hx) := Hex in
+    ex_intro (fun x : A => Q x y) x (Hx y).
+
+  Definition eq_transitive :
+    forall (x y z : A),
+      x = y
+      -> y = z
+      -> x = z :=
+      fun (x y z : A) (Hxy : x = y) (Hyz : y = z) =>
+  eq_ind y (fun y' => x = y') Hxy z Hyz.
+End firstorder.
+
+
+(** * Induction principles *)
+
+Section my_nat_ind.
+  Variable P : nat -> Prop.
+  Variable base : P O.
+  Variable ind : forall n, P n -> P (S n).
+
+  Fixpoint my_nat_ind (n : nat) : P n :=
+    match n return (P n) with
+      | O => base
+      | S n' => ind n' (my_nat_ind n')
+    end.
+End my_nat_ind.
+
+Require Import List.
+
+Section my_list_ind.
+  Variable A : Set.
+  Variable P : list A -> Prop.
+  Variable base : P nil.
+  Variable ind : forall x ls, P ls -> P (x :: ls).
+
+  Fixpoint my_list_ind (ls : list A) : P ls :=
+    match ls return (P ls) with
+      | nil => base
+      | x :: ls' => ind x ls' (my_list_ind ls')
+    end.
+End my_list_ind.
